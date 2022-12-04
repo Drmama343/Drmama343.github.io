@@ -1,0 +1,254 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8" />
+        <title>
+            CV Odin
+        </title>
+        <link rel="stylesheet" href="ClementinLy.css" media="all" type="text/css" />
+    </head>
+
+    <body>
+        <header>
+        <h1>Odin</h1>
+        </header>
+
+        <nav>
+            <img src="odin-ragnarok.jpg" alt="odin-ragnarok" style="width: 400px; height: 600px;">
+            <div id="odin" class="odin">
+            <p>Odin</p>
+            </div>
+
+
+
+
+            <div>Teachable Machine Image Model</div>
+                <button type="button" onclick="init()">Start</button>
+                <div id="webcam-container"></div>
+                <div id="label-container"></div>
+                <script src="https://cdn.jsdelivr.net/npm/@tensorflow/tfjs@1.3.1/dist/tf.min.js"></script>
+                <script src="https://cdn.jsdelivr.net/npm/@teachablemachine/image@0.8/dist/teachablemachine-image.min.js"></script>
+                <script type="text/javascript">
+                    // More API functions here:
+                    // https://github.com/googlecreativelab/teachablemachine-community/tree/master/libraries/image
+
+                    // the link to your model provided by Teachable Machine export panel
+                    const URL = "https://teachablemachine.withgoogle.com/models/vXCD9uq7C/";
+
+                    let model, webcam, labelContainer, maxPredictions;
+
+                    // Load the image model and setup the webcam
+                    async function init() {
+                        const modelURL = URL + "model.json";
+                        const metadataURL = URL + "metadata.json";
+
+                        // load the model and metadata
+                        // Refer to tmImage.loadFromFiles() in the API to support files from a file picker
+                        // or files from your local hard drive
+                        // Note: the pose library adds "tmImage" object to your window (window.tmImage)
+                        model = await tmImage.load(modelURL, metadataURL);
+                        maxPredictions = model.getTotalClasses();
+
+                        // Convenience function to setup a webcam
+                        const flip = true; // whether to flip the webcam
+                        webcam = new tmImage.Webcam(200, 200, flip); // width, height, flip
+                        await webcam.setup(); // request access to the webcam
+                        await webcam.play();
+                        window.requestAnimationFrame(loop);
+
+                        // append elements to the DOM
+                        document.getElementById("webcam-container").appendChild(webcam.canvas);
+                        labelContainer = document.getElementById("label-container");
+                        for (let i = 0; i < maxPredictions; i++) { // and class labels
+                            labelContainer.appendChild(document.createElement("div"));
+                        }
+                    }
+
+                    async function loop() {
+                        webcam.update(); // update the webcam frame
+                        await predict();
+                        window.requestAnimationFrame(loop);
+                    }
+
+                    // run the webcam image through the image model
+                    async function predict() {
+                        // predict can take in an image, video or canvas html element
+                        const prediction = await model.predict(webcam.canvas);
+                        for (let i = 0; i < maxPredictions; i++) {
+                            const classPrediction =
+                                prediction[i].className + ": " + prediction[i].probability.toFixed(2);
+                            labelContainer.childNodes[i].innerHTML = classPrediction;
+                        }
+                    }
+</script>
+
+
+
+
+        </nav>
+
+
+
+        <div id="haut">
+            <p> <ul>
+                    <li><a href="ClementinLy2.html">Biographie</a></li>
+                </ul>
+            </p>
+
+            <div id="bordure" class="bordure">
+                <div id="minititre" class="minititre">
+                <p> Vrai nom : </p>
+                </div>
+                <p>
+                        <ul>
+                            <li>Odin Borson </li><br />
+                        </ul>
+                </p>
+            </div>
+
+            <a href="#haut" class="retour">Retour en haut de la page</a>
+            
+
+
+            <div id="bordure" class="bordure">
+                <div id="minititre" class="minititre">
+            <p>Surnoms : </p>
+            </div>
+            <p>
+                        <ul>
+                            <li>Père de Toutes Choses </li>
+                            <li>Odin, Père de Toutes Choses </li>
+                            <li>Être le plus puissant des <i>Neuf Royaumes</i> </li>
+                            <li>Protecteur des <i>Neuf Royaumes</i> </li>
+                            <li>Roi des Dieux </li>
+                            <li>Odin d'Asgard </li>
+                            <li>Dieu de la Galaxie </li><br />
+                        </ul>
+            </p>
+            </div>
+
+            <a href="#haut" class="retour">Retour en haut de la page</a>
+
+
+            <div id="bordure" class="bordure">
+                <div id="minititre" class="minititre">
+            <p> Espèce :  </p>
+            </div>
+                            <ul>
+                                <li><i>Asgardien</i> </li><br />
+                            </ul>
+            </div>
+
+            <a href="#haut" class="retour">Retour en haut de la page</a>
+
+            
+
+            <div id="bordure" class="bordure">
+                <div id="minititre" class="minititre">
+            <p> Nationalité : </p>
+            </div>
+                            <ul>
+                                <li><i>Asgardien</i> </li><br />
+                            </ul>
+            </div>
+
+            <a href="#haut" class="retour">Retour en haut de la page</a>
+
+            
+            <div id="bordure" class="bordure">
+                <div id="minititre" class="minititre">
+            <p> Sexe : </p>
+            </div>
+                            <ul>
+                                <li>Homme </li><br />
+                            </ul>
+            </div>
+
+            <a href="#haut" class="retour">Retour en haut de la page</a>
+
+            
+
+            <div id="bordure" class="bordure">
+                <div id="minititre" class="minititre">
+            <p>Réalité : </p>
+            </div>
+                            <ul>
+                                <li><i>Terre-199999</i> </li><br />
+                            </ul>
+            </div>
+
+            <a href="#haut" class="retour">Retour en haut de la page</a>
+
+            
+            
+            <div id="bordure" class="bordure">
+                <div id="minititre" class="minititre">
+            <p> Décès :</p>
+            </div>
+                            <ul>
+                                <li>18 novembre 2017</li><br />
+                            </ul>
+            </div>
+
+            <a href="#haut" class="retour">Retour en haut de la page</a>
+
+                          
+                    
+            <div id="bordure" class="bordure">
+                <div id="minititre" class="minititre">
+            <p> Titres : </p>  
+            </div>      
+                            <ul>
+                                <li>Dieu de la Guerre et de la Sagesse </li>
+                                <li>Dieu de la Galaxie </li>
+                                <li>Prince d'<i>Asgard</i> </li>
+                                <li>Roi d'<i>Asgard</i>  </li>
+                            </ul>
+            </div>
+
+            <a href="#haut" class="retour">Retour en haut de la page</a>
+
+            
+
+            <div id="bordure" class="bordure">
+                <div id="minititre" class="minititre">
+            <p> Affiliation : </p>
+            </div>
+                            <ul>
+                                <li>Famille Royale <i>Asgardienne</i> </li><br />
+                            </ul>
+            </div>
+
+            <a href="#haut" class="retour">Retour en haut de la page</a>
+
+            
+                        
+            <div id="bordure" class="bordure">
+                <div id="minititre" class="minititre">
+            <p> Statut : </p>
+            </div>
+                            <ul>
+                                <li>Décédé </li><br />
+                            </ul>
+            </div>
+
+            <a href="#haut" class="retour">Retour en haut de la page</a>
+
+            
+
+            <div id="bordure" class="bordure">
+                <div id="minititre" class="minititre">
+            <p>Acteur : </p>
+            </div>
+                            <ul>
+                            <li> Anthony Hopkins </li>
+                            </ul>
+            </p>
+            </div>
+
+            <a href="#haut" class="retour">Retour en haut de la page</a>
+
+            
+        </div>
+    </body>
+</html>

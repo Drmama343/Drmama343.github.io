@@ -1,0 +1,12 @@
+@font-face
+{
+	font-family :'Aa';
+	src : url('25.otf') format('opentype');
+}
+
+li
+{
+    font-family : 'Aa', serif;
+    color : white;
+    font-size: 25px;
+}

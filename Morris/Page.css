@@ -1,0 +1,94 @@
+/*Les liens*/
+a[title="Lien1"]{
+    color: aliceblue;
+}
+
+a:link {  /* lien non visité*/
+    color: aliceblue; /*bleu clair*/
+
+  }
+  a:active {  /*lien actif */
+    color: green;
+  } 
+  a:hover { /*lorsque le pointeur de la souris survole un lien*/
+    color: orangered;
+    font-style: italic;
+  }
+
+/*Les listes*/
+.Liste {
+    text-transform: uppercase;
+    text-decoration: underline;
+}
+
+ul {
+    list-style : square;
+}
+
+li {
+    color: aliceblue;
+    text-transform: capitalize;
+}
+
+
+body { 
+    background-position: top left ; 
+    background-image: url('./Fond.jpg') ; 
+    background-repeat: repeat ; 
+    border: 2px double aliceblue ;
+}
+
+h1{
+    text-align: center;
+    text-decoration: overline;
+    color: aliceblue;
+    text-shadow: 4px 2px 4px black;
+}
+
+p {
+    color: aliceblue;
+    font-family:Arial;
+    margin-left: 20px;
+    margin-right: 25%;
+}
+
+
+
+img {
+    float: right;
+    border: 2px dashed aliceblue;
+}
+
+
+
+.Important {
+    font-family:'Times New Roman', Times, serif;
+    font-style: italic;
+    font-size: larger;
+}
+
+
+
+#Sitation {
+    text-decoration: line-through;
+    color: aliceblue;
+    margin-left: 50px;
+}
+
+hr {
+    width: 50%;
+    text-align: center;
+    color: aliceblue;
+}
+
+nav{
+    position: fixed;
+    right: 0px;
+}
+
+.Text{
+    color: aliceblue;
+    font-family:Arial;
+    margin-left: 20px;
+    margin-right: 50%;
+}

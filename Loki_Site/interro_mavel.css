@@ -1,0 +1,131 @@
+* 
+{
+	font-family: serif,"Times New Roman",Arial;
+}
+body
+{
+	background-image: url("./images/6138841146924e35cd7c296182b963ce--loki-wallpaper-tile-wallpaper.jpg");
+	
+} 
+
+h1
+{
+	text-align : center;
+	color: gold;
+	text-shadow: 1px 1px 1px black ;
+}
+h2
+{
+	text-align : center;
+	color: rgb(4, 99, 4);
+	text-shadow: 1px 1px 1px grey ;
+}
+h3
+{
+	text-align : center;
+	color: rgb(4, 99, 4);
+	text-shadow: 2px 2px 1px gold ;
+}
+p
+{
+	text-align: 25px;
+	
+}
+hr
+{
+	width: 70%;
+	align-self: center;
+
+}
+img
+{
+	width:250px;
+	height: 250px;
+}
+#span
+{
+	text-shadow: 1px 1px 1px gold;
+}
+
+
+
+footer
+{
+	text-align : center;
+	border: 2px solid gold;
+	box-shadow: 2px 2px 0px grey;
+	padding: 5px;
+	background-color: rgb(4, 99, 4);
+} 
+
+nav{
+	border: 5px solid rgb(4, 99, 4);
+	box-shadow: 1px 2px 0px grey;
+	background-color: whitesmoke;
+	padding: 5px;
+	width: 10%;
+	height: 20%;
+	position: fixed;
+	left: 0px;
+	top: 20%;
+}
+
+header{
+	border: 2px solid gold;
+	box-shadow: 2px 2px 0px grey;
+	padding: 5px;
+	background-color: rgb(4, 99, 4);
+}
+
+section{
+	border: 2px solid gold;
+	box-shadow: 2px 2px 0px grey;
+	padding: 5px;
+	margin-left: 15%;
+	margin-right: 15%;
+	background-color: whitesmoke;
+	padding: 25px;
+}
+
+#machineIA{
+	text-align: center;
+}
+
+#pointC{
+	border: 2px solid rgb(4, 99, 4);
+	box-shadow: 2px 2px 0px grey;
+	background-color: whitesmoke;
+	padding: 25px;
+	width: 30%;
+}
+#pointD{
+	border: 2px solid rgb(4, 99, 4);
+	box-shadow: 2px 2px 0px grey;
+	background-color: whitesmoke;
+	padding: 25px;
+	width: 30%;
+	margin-right: 15%;
+	position: relative;
+    left: 35%;
+    bottom: 10px;
+}
+#imagesLink{
+	border: 0px;
+	background: none;
+	box-shadow: none;
+	padding: 25px;
+	text-align: center;
+}
+
+a:hover{
+	
+	color:rgb(4, 99, 4); 
+}
+
+a{
+	color: black;
+}
+
+#pis{
+	color: gold;
+}

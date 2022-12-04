@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+	<!-- données valables pour toute la page -->
+	<head>
+		<!-- méta donnees -->
+		<meta charset="UTF-8">
+		<meta name="author" content="Antoine Caron, IUT du Havre, CDIN : contenu html">
+		<meta name="Language" content = "fr">
+
+		<!-- titre de la page -->
+		<title>Interro Marvel Loki</title>
+
+		<!-- CSS --> 
+		<link rel="stylesheet" type="text/css" href="./interro_mavel.css" >
+	</head>
+	
+
+
+
+
+
+
+
+	
+	<!-- corps de la page -->
+	<body>
+		<hr>
+
+
+
+		<header>
+			<h1 id="topage"><u>Qui est Loki ?</u></h1>
+		</header>
+			
+		<hr>
+		
+		<nav>
+			<div><a href="#topage">Haut de Page</a>
+			<div><a href="#machineIA">Etes-vous Loki?</a>
+			<div><a href="#Comprendre">Mythologie</a>
+			<div><a href="#basPage">Bas de Page</a>
+		</nav>
+
+		<section id="machineIA">
+			<div><h3 >Teachable Machine Image Model </h3></div>
+			<button type="button" onclick="init()">Start</button>
+			<div id="webcam-container"></div>
+			<div id="label-container"></div>
+			<script src="https://cdn.jsdelivr.net/npm/@tensorflow/tfjs@1.3.1/dist/tf.min.js"></script>
+			<script src="https://cdn.jsdelivr.net/npm/@teachablemachine/image@0.8/dist/teachablemachine-image.min.js"></script>
+			<script type="text/javascript">
+				// More API functions here:
+				// https://github.com/googlecreativelab/teachablemachine-community/tree/master/libraries/image
+			
+				// the link to your model provided by Teachable Machine export panel
+				const URL = "https://teachablemachine.withgoogle.com/models/yPKzxJZIH/";
+			
+				let model, webcam, labelContainer, maxPredictions;
+			
+				// Load the image model and setup the webcam
+				async function init() {
+					const modelURL = URL + "model.json";
+					const metadataURL = URL + "metadata.json";
+			
+					// load the model and metadata
+					// Refer to tmImage.loadFromFiles() in the API to support files from a file picker
+					// or files from your local hard drive
+					// Note: the pose library adds "tmImage" object to your window (window.tmImage)
+					model = await tmImage.load(modelURL, metadataURL);
+					maxPredictions = model.getTotalClasses();
+			
+					// Convenience function to setup a webcam
+					const flip = true; // whether to flip the webcam
+					webcam = new tmImage.Webcam(500, 500, flip); // width, height, flip
+					await webcam.setup(); // request access to the webcam
+					await webcam.play();
+					window.requestAnimationFrame(loop);
+			
+					// append elements to the DOM
+					document.getElementById("webcam-container").appendChild(webcam.canvas);
+					labelContainer = document.getElementById("label-container");
+					for (let i = 0; i < maxPredictions; i++) { // and class labels
+						labelContainer.appendChild(document.createElement("div"));
+					}
+				}
+			
+				async function loop() {
+					webcam.update(); // update the webcam frame
+					await predict();
+					window.requestAnimationFrame(loop);
+				}
+			
+				// run the webcam image through the image model
+				async function predict() {
+					// predict can take in an image, video or canvas html element
+					const prediction = await model.predict(webcam.canvas);
+					for (let i = 0; i < maxPredictions; i++) {
+						const classPrediction =
+							prediction[i].className + ": " + prediction[i].probability.toFixed(2);
+						labelContainer.childNodes[i].innerHTML = classPrediction;
+					}
+				}
+			</script>
+		</section>
+		
+
+
+		<hr>
+
+
+
+		<section>
+			<p>
+				<h2 id="Comprendre">Pour comprendre qui est Loki il faut comprendre qui il est dans la mythologie nordique.<br></h2>
+				<article>"Loki, également connu sous le nom de Loptr, Hveðrungr ou encore Loge (dans la tétralogie de Wagner), est un des dieux principaux du panthéon de la mythologie nordique.<br>
+
+				Appartenant aux groupes des Aesir, Loki est le dieu de la malice, de la discorde et des illusions.<br>
+
+				Il est le fils du géant Farbauti et de Laufey, ainsi que le père de plusieurs monstres : le serpent Jörmungand, le loup Fenrir et la déesse du monde des morts Hel. Il est également la mère du cheval d'Odin à huit jambes Sleipnir. Malgré ses origines, il est accueilli dans le panthéon divin des Ases par Odin.<br>
+
+				Loki est capable de métamorphose ; il est aussi impulsif et irresponsable que malin et rusé. Les Aesir ont souvent recours à lui pour régler des problèmes dont il est bien souvent lui-même la cause. De nature fondamentalement négative et traître, sa jalousie l'amène à causer la mort du dieu Baldr. Furieux, les Ases le punissent en l'attachant avec les entrailles d'un de ses fils sous un serpent dont le venin goutte sur son visage. Il en sera ainsi jusqu'à la fin prophétique du monde, le Ragnarök, où Loki se libèrera et mènera les géants à l'assaut contre les dieux et les hommes. Loki et son dieu opposé, Heimdall, s'entretueront pendant la bataille.<br>
+
+				La nature changeante et ambiguë de Loki est sujette à débats chez les spécialistes quant à son rôle dans le panthéon divin, et il a été comparé à divers personnages d'autres mythologies. Loki est un dieu récurrent et célèbre qui a survécu dans le folklore moderne d'Europe du Nord ; son personnage est référencé et source d'inspiration dans de nombreuses œuvres de la culture moderne."</article>
+				<aside>(Wikipedia)</aside> 
+			</p>
+		</section>
+
+		<hr>
+
+		<section>
+				<h2>Chez Marvel l'histoire est un peu différente bien qu'elle y ressemble</h2> 
+
+				<p>Loki était le fils de Laufey, le dirigeant des Géants des Glaces de Jotunheim, qui fut abandonné et laissé pour mort peu après sa naissance. Retrouvé par Odin, Loki fut amené sur Asgard, puis adopté par lui et sa femme Frigga en tant que prince Asgardien, aux côtés de Thor. Quand Thor s'apprêtait à être couronné Roi, Loki sabota la cérémonie en laissant les Géants des Glaces attaquer Asgard, amenant Thor à vouloir prendre sa vengeance contre Jotunheim et à se faire bannir sur Terre tandis que Loki découvrait la vérité à propos de son héritage. Frigga conféra le trône à Loki quand Odin sombra dans son sommeil ; toutefois, quand les Trois Guerriers et Sif tentèrent de ramener Thor, Loki fut forcé d'essayer de les arrêter. Néanmoins, Thor revint de son exil sur Terre et mit fin au règne de Loki. Face à la désapprobation d'Odin quant à ses actes, Loki se laissa tomber dans les profondeurs obscures de l'univers, entrant dans un trou de ver créé par la soudaine disparation du Bifrost.</p>
+
+				<p>Transporté par le trou de ver vers le Sanctuaire, Loki rencontra l'Autre qui lui proposa de servir sous les ordres de Thanos et lui donna le Sceptre. Loki reçut le commandement sur l'armée Chitauri dans le but de conquérir la Terre, à la condition qu'il récupère le Tesseract pour Thanos. À son arrivée sur Terre, Loki s'attaqua au S.H.I.E.L.D. et récupéra rapidement le Tesseract, se créant au passage une petite armée, notamment composée de Hawkeye et Erik Selvig, à l'aide du Sceptre afin d'obtenir les éléments manquants pour la suite de son invasion. Loki utilisa le pouvoir du Tesseract pour ouvrir un portail au dessus de New York et provoqua l'Invasion Chitauri, mais ses plans furent finalement contrecarrés par les Avengers. Thor le ramena sur Asgard en tant que prisonnier, où Odin le condamna à passer le reste de sa vie dans les donjons Asgardiens en guise de punition pour ses crimes.</p>
+				
+				<p>Toutefois, lorsque sa mère Frigga fut tuée durant le sacage d'Asgard orchestré par les Elfes Noirs alors qu'il était emprisonné, Loki fut libéré par Thor qui lui proposa d'obtenir sa vengeance pour la mort de Frigga en lui demandant son aide pour vaincre les Elfes Noirs et leur leader Malekith qui désiraient utiliser le pouvoir de l'Éther pour transformer l'univers en éternels ténèbres. Durant un affrontement contre les Elfes Noirs sur Svartalfheim, Loki affronta et tua le puissant Kurse mais falsifia sa mort devant Thor, avant de retourner secrètement sur Asgard, sans que personne ne s'en rende compte au sein du royaume. Loki élimina Odin du trône et prit sa place ainsi que son apparence pendant plusieurs années. Durant son règne, Loki dirigea son peuple et envoya notamment Sif en mission sur Terre pour attaquer sur les attaques de Lorelei et Vin-Tak.</p>
+				
+				<p>Finalement, Thor retourna sur Asgard après avoir enquêter sur les Pierres d'Infinités et força Loki à révéler sa supercherie. Loki voyagea avec Thor sur Terre pour retrouver Odin, arrivant juste à temps pour faire leurs adieux et assister à sa disparition, alors que Loki était pleinement reconnu comme son fils par son père adoptif. Toutefois, la mort d'Odin permit à Hela, la première née d'Odin, de revenir de son bannissement et d'engager une guerre contre les Neuf Royaumes. Loki se retrouva projeté sur Sakaar aux côtés de Thor où il s'allia au Grand Maître tandis que son frère était obligé d'affronter Hulk. Bien qu'il tenta une nouvelle fois des manigances pour obtenir sa liberté, Loki choisit finalement d'aider Thor et les Revengers dans une bataille finale contre Hela, dans laquelle Loki invoqua Surtur, qui tua Hela en provoquant le Ragnarök et detruisant la totalité d'Asgard.</p>
+				
+				<p>Dans ses derniers instants sur Asgard, Loki récupéra le Tesseract dans le coffre d'Odin et à la suite de la destruction d'Asgard, décida de rester aux côtés de son frère et participa à son ascension sur le trône, menant les rescapés du peuple Asgardien vers une nouvelle vie. Les conséquences de son ancienne alliance avec Thanos revinrent le hanter quand le Titan Fou et son Ordre Noir interceptèrent le Statesman dans leur chemin vers la Terre. Dans le chaos qui s'ensuivit où même Hulk ne parvint pas à vaincre Thanos, Loki tenta de piéger et de tuer Thanos mais échoua. Provoquant une dernière fois le Titan Fou en affirmant qu'il ne deviendrait jamais un dieu, Thanos lui écrasa la gorge, tuant finalement le Dieu de la Malice une bonne fois pour toutes.
+		</section>
+
+		<hr>
+
+		<section id="pointC">
+			<h3><span id="span">Loki en quelques points:</span></h3>
+			<ul>  
+				<li> Il est pas loyal</li>
+				<li> deteste son frere car il est le "prefere" d'Odin </li>
+			</ul>
+		</section>
+
+		<section id="pointD">
+			<h3><em>les etapes de la fin du 1er avenger</em></h3>
+			<ol>  
+				<li> Il c'est fait casser le crane par hulk </li>
+				<li>retourne a hasgard</li>
+			</ol>  
+		</section>
+
+		<hr>
+  
+		<section>
+			<dl>
+				<dt>c'est pas vraiment un dieu </dt>
+				<dd>juste le fils dun geant</dd> 
+				<dt> pas le temps de reflechir</dt> 
+				<dd>mais y a la balise</dd> 
+			</dl> 
+		</section>
+		
+		<hr>
+
+		<section id="imagesLink">
+			<a href="http://www.marvel-cineverse.fr/pages/mcu/encyclopedie/personnages/loki-classique-realite-du-loki-classique.html" target="_blank"> <img src="./images/lokiBg.jpg" alt="photo de Loki (mais en Bg mais pas comme dans les films) qui renvoie vers son encyclopedie"> </a> 
+			<a href="http://www.marvel-cineverse.fr/pages/mcu/encyclopedie/personnages/loki-alligator-realite-du-loki-alligator.html" target="_blank"> <img src="./images/CrocoLoki.jpg" alt="photo de Loki (mais en Croco) qui renvoie vers son encyclopedie"> </a>
+		</section>
+
+		
+
+		<footer id="basPage">
+			<a id="pis" href="http://www.marvel-cineverse.fr/pages/mcu/encyclopedie/personnages/loki.html" target="_blank" title="encyclopedie marvel" id="source"><i> source des informations</i></a> 
+		</footer>
+
+
+	</body>
+
+</html>    

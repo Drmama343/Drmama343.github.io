@@ -1,0 +1,63 @@
+header {
+    text-align: center;
+    color: rgb(145, 110, 151);
+    font-size: 45px;
+}
+
+nav{
+    float : left;
+    width: 150px;
+    border: 3px solid  rgb(30, 2, 33);
+    margin-top: 5%;
+    background-color: rgb(237, 196, 244);
+}
+
+section, div{
+    margin-left: 160px; /* pour ne pas écrire sous la partie nav */
+    margin-right: 160px; /* pour ne pas écrire sous la partie nav */
+
+
+    border: 2px solid rgb(30, 2, 33);
+
+    margin-bottom: 40px;
+    padding: 10px;
+    box-shadow: 6px 6px 0px black;
+}
+
+section{
+    background-color: rgb(237, 196, 244);
+}
+div {
+    background-color: rgb(145, 110, 151);
+}
+
+aside {
+    background-color: rgb(237, 196, 244);
+    color: rgb(30, 2, 33);;
+    width: 170px;
+    border: 3px solid rgb(30, 2, 33);
+    position: fixed;
+    right: 7px;
+    top: 15px;
+}
+
+html, body {
+    margin: 0;
+    padding: 0;
+    background-color: rgb(65, 37, 68);
+    color: rgb(241, 235, 228);
+}
+
+h1{
+    color:rgb(65, 37, 68);
+    
+}
+
+nav{ 
+color:brown;
+font-weight:bold;
+}
+
+h3{
+    color:blueviolet;
+}

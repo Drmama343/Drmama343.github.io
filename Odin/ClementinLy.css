@@ -1,0 +1,56 @@
+@font-face
+{
+	font-family :'Aa';
+	src : url('25.otf') format('opentype');
+}
+
+li
+{
+    font-family : 'Aa', serif;
+    font-size: 20px;
+}
+
+header{
+    border: 1px;
+    border-radius: 6px;
+    border-color: black;
+    border-style: solid;
+    box-shadow: 4px 4px 4px grey;
+    background-color: #c3842bd9;
+    height: 120px;
+    color : rgb(135, 1, 1);
+    text-align: center;
+    font-size: 25px;
+}
+
+nav{
+    margin-top: 150px;
+    margin-left: 750px;
+    position: absolute;
+}
+
+.odin{
+    color :rgb(135, 1, 1);
+    font-weight: bold;
+    text-align: center;
+    font-size: 75px;
+}
+
+
+.bordure{
+    border: 1px;
+    border-radius: 6px;
+    border-color: black;
+    border-style: solid;
+    background-color: #c3842bd9;
+    width: 500px;
+    box-shadow: 4px 4px 4px grey;
+    margin-bottom: 25px;
+}
+
+.minititre{
+    color :rgb(135, 1, 1);
+    font-weight: bold;
+    text-decoration: underline;
+    margin-left: 5px;
+}
